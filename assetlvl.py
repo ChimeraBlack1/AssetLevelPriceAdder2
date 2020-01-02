@@ -71,11 +71,15 @@ worksheet = workbook.add_sheet('AssetLevelAdded')
 NewWorkbookName = "myNewWb.xls"
 
 # end of excel sheet (report for perry)
-endOfXLSheet = 3499
-endOfWells = 2152
-endOfDLL = 1464
+endOfSherpaReport = 3569
+endOfWells = 2222
+endOfDLL = 1489
+DLLAssetPriceColumn = 21
+DLLSerialColumn = 22
+WellsAssetPriceColumn = 4
+WellsSerialColumn = 2
 
-for x in range(1,endOfXLSheet):
+for x in range(1,endOfSherpaReport):
   # get serial to test
   try:
     testSerial = sheet3.cell_value(x,10)
@@ -86,8 +90,8 @@ for x in range(1,endOfXLSheet):
   # look in the wells portfolio for the serial
   for y in range(1, endOfWells):
     try:
-      wellsSerial = sheet.cell_value(y,5)
-      wellsAssetPrice = sheet.cell_value(y,6)
+      wellsAssetPrice = sheet.cell_value(y, WellsAssetPriceColumn)
+      wellsSerial = sheet.cell_value(y, WellsSerialColumn)
     except:
       continue
 
@@ -104,8 +108,8 @@ for x in range(1,endOfXLSheet):
   # look in the DLL portfolio for the serial
   for y in range(1, endOfDLL):
     try:
-      DLLAssetPrice = sheet2.cell_value(y,19)
-      DLLserial = sheet2.cell_value(y,22)
+      DLLAssetPrice = sheet2.cell_value(y,DLLAssetPriceColumn)
+      DLLserial = sheet2.cell_value(y,DLLSerialColumn)
     except:
       continue
 
